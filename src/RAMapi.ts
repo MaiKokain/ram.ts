@@ -7,10 +7,10 @@ export class RAM {
     /**
      * READ [Roblox Alt Manager Documentation](https://ic3w0lf22.gitbook.io/roblox-account-manager/)
      */
-    constructor(port = "7963", password: string) {
-        if (password?.length < 6) throw new Error("Password must be over 6 characters.") 
-        this.password = password
-        this.url = `http://localhost:${port}`
+    constructor(opt: RAMOptions) {
+        if (opt.password?.length < 6) throw new Error("Password must be over 6 characters.") 
+        this.password = opt.password
+        this.url = `http://localhost:${opt.port ?? "7963"}`
     }
     
     private async GET(method: string, account: string, any?: any[]) {
@@ -53,7 +53,7 @@ export class RAM {
         return true
     }
     /**
-     * Add a new account to cache data.
+     * Add a new account to cache data. (not saved for now)
      */
     public async new(account: string): Promise<boolean|string> {
         return await this.CheckAccount(account)
@@ -163,4 +163,9 @@ export class RAM {
     public async GetCSRF(account: string): Promise<boolean|string> {
         return await this.GET("GetCSRFToken", account)
     }
+}
+
+interface RAMOptions {
+    port?: string,
+    password: string
 }

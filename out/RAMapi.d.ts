@@ -10,7 +10,7 @@ export declare class RAM {
     private POST;
     CheckAccount(username: string): Promise<boolean>;
     /**
-     * Add a new account to cache data.
+     * Add a new account to cache data. (not saved for now)
      */
     new(account: string): Promise<boolean | string>;
     /**

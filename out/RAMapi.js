@@ -51,7 +51,7 @@ class RAM {
         return true;
     }
     /**
-     * Add a new account to cache data.
+     * Add a new account to cache data. (not saved for now)
      */
     async new(account) {
         return await this.CheckAccount(account);

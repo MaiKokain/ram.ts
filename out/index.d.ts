@@ -1,1 +1,2 @@
-export * from './RAMAPI';
+import { RAM } from "./RAMapi";
+export default RAM;
