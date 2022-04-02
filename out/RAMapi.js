@@ -6,12 +6,12 @@ class RAM {
     /**
      * READ [Roblox Alt Manager Documentation](https://ic3w0lf22.gitbook.io/roblox-account-manager/)
      */
-    constructor(port = "7963", password) {
+    constructor(opt) {
         this.accounts = [];
-        if (password?.length < 6)
+        if (opt.password?.length < 6)
             throw new Error("Password must be over 6 characters.");
-        this.password = password;
-        this.url = `http://localhost:${port}`;
+        this.password = opt.password;
+        this.url = `http://localhost:${opt.port ?? "7963"}`;
     }
     async GET(method, account, any) {
         let url = `${this.url}/${method}?Account=${account}`;

@@ -5,7 +5,7 @@ export declare class RAM {
     /**
      * READ [Roblox Alt Manager Documentation](https://ic3w0lf22.gitbook.io/roblox-account-manager/)
      */
-    constructor(port: string | undefined, password: string);
+    constructor(opt: RAMOptions);
     private GET;
     private POST;
     CheckAccount(username: string): Promise<boolean>;
@@ -83,3 +83,8 @@ export declare class RAM {
      */
     GetCSRF(account: string): Promise<boolean | string>;
 }
+interface RAMOptions {
+    port?: string;
+    password: string;
+}
+export {};

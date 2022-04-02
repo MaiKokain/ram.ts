@@ -1,5 +1,5 @@
 ## About
-This is a Javascript/Typescript library for [Roblox Account Manager](https://github.com/ic3w0lf22/Roblox-Account-Manager) created by [ic3w0lf22](https://github.com/ic3w0lf22) and other contributer.
+This is a Javascript/Typescript library for [Roblox Account Manager](https://github.com/ic3w0lf22/Roblox-Account-Manager) (created by [ic3w0lf22](https://github.com/ic3w0lf22) and other contributer.)
 
 ---
 ### Installation
@@ -32,7 +32,7 @@ Not Comming lol, [Read This](https://ic3w0lf22.gitbook.io/roblox-account-manager
 ---
 
 ## Features to be comming (or maybe not)
-[ ] ExecuteScript function by using WebSocket or pipe passthrough.
+[ ] ExecuteScript function by using WebSocket or pipe passthrough. Progress: 25% Currently only works on WebSocket. Which is supported by: Script-Ware, KRNL, Synapse
 ```ts
-function ExecuteScript(exploit: string, script: string): Promise<boolean|string>
+function Execute(exploit: string, script: string): string {}
 ```

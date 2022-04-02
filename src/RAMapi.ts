@@ -1,4 +1,5 @@
 import * as needle from 'needle'
+
 export class RAM {
     private password: string|null
     private url: string

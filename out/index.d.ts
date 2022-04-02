@@ -1,2 +1,3 @@
+import { Executor } from "./Executor";
 import { RAM } from "./RAMapi";
-export default RAM;
+export { Executor, RAM };
