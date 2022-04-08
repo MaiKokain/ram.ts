@@ -1,6 +1,8 @@
 import { Server } from 'ws'
 import * as events from 'events'
 import TypedEmitter from 'typed-emitter'
+import * as net from 'net';
+import find from 'find-process';
 
 export class Executor {
     private clientConnected: number = 0
@@ -67,12 +69,44 @@ export class Executor {
                 }
                 return `Success`
             case "krnl":
-                break
+                    const client = net.connect(pipes[exploit])
+                    client.once('ready', () => { client.end(script) })
+                    return client
             case "fluxus":
+                const InjectedMaps = new Map()
+
+                const roblox_process = await find('name', 'RobloxPlayer')
+                for (let i = 0; i < roblox_process.length; i++) {
+                    if (InjectedMaps.has(roblox_process[i].pid)) {
+                        const krnl_client = net.connect(pipes[exploit]+roblox_process[i].pid)
+                        krnl_client.once('ready', () => { krnl_client.end(script) })
+                        return krnl_client
+                    } else {
+                        InjectedMaps.set(roblox_process[i].pid, "");
+                        const client = net.connect(pipes[exploit] + roblox_process[i].pid)
+                        client.once('ready', () => { client.end(script) })
+                        return client
+                    }
+                }
                 break
+            case "oxygen_u":
+                const oxy_client = net.connect(pipes[exploit])
+                oxy_client.once('ready', () => { oxy_client.end(script) })
+                return oxy_client
+            case "easy_exploit":
+                const easyexploit_client = net.connect(pipes[exploit])
+                easyexploit_client.once('ready', () => { easyexploit_client.end(script) })
+                return easyexploit_client
             default: break
         }
     }
 }
 
-type exploit_opt = "socket" | "krnl" | "fluxus"
+type exploit_opt = "socket" | "krnl" | "fluxus" | "oxygen_u" | "easy_exploit"
+
+const pipes = {
+    "krnl": "\\\\.\\pipe\\krnlpipe",
+    "oxygen_u": "\\\\.\\pipe\\OxygenU",
+    "fluxus": "\\\\.\\pipe\\fluxus_send_pipe",
+    "easy_exploit": "\\\\.\\pipe\\ocybedam"
+}

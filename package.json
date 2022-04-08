@@ -14,7 +14,9 @@
   "dependencies": {
     "@types/needle": "^2.5.3",
     "events": "^3.3.0",
+    "find-process": "^1.4.7",
     "needle": "^3.0.0",
+    "net": "^1.0.2",
     "request": "^2.88.2",
     "ws": "^8.5.0"
   },

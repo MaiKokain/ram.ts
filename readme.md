@@ -36,7 +36,16 @@ Not Comming lol, [Read This](https://ic3w0lf22.gitbook.io/roblox-account-manager
 ---
 
 ## Features to be comming (or maybe not)
- * [ ] ExecuteScript function by using WebSocket or pipe passthrough. Progress: 25% Currently only works on WebSocket. Which is supported by: Script-Ware, KRNL, Synapse
-```ts
-function Execute(exploit: string, script: string): string {}
-```
+ * [x] ExecuteScript function by using WebSocket or pipe passthrough. Progress: 95%, Works on:
+    - [KRNL](https://krnl.ca)
+    - [Fluxus](https://fluxteam.xyz)
+    - [Oxygen U](https://oxygenu.xyz)
+    - [Easy(E)Xploits API](https://easyexploits.com)
+    - Websockets:
+        - [KRNL](https://krnl.ca)
+        - [Synapse X](https://x.synapse.to)
+        - [Script-Ware](https://script-ware.com) (Only Windows)
+    - To Come or Not:
+        - Electron
+        - WeAreDev API
+        - More!
