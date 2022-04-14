@@ -1,4 +1,5 @@
 /// <reference types="node" />
+/// <reference types="ws" />
 import TypedEmitter from 'typed-emitter';
 import * as net from 'net';
 export declare class Executor {
@@ -20,7 +21,7 @@ export declare class Executor {
     /**
      * Send a script to WebSocket Server or Exploit pipe.
      */
-    Execute(exploit: exploit_opt, script: string): Promise<net.Socket | "No Exploit is connected to websocket." | "Success" | undefined>;
+    Execute(exploit: exploit_opt, script: string): Promise<net.Socket | "No Exploit is connected to websocket." | Set<import("ws").WebSocket> | undefined>;
 }
 declare type exploit_opt = "socket" | "krnl" | "fluxus" | "oxygen_u" | "easy_exploit";
 export {};

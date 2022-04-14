@@ -1,30 +1,10 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RAM = void 0;
-const needle = __importStar(require("needle"));
+const needle_1 = __importDefault(require("needle"));
 class RAM {
     /**
      * READ [Roblox Alt Manager Documentation](https://ic3w0lf22.gitbook.io/roblox-account-manager/)
@@ -45,7 +25,7 @@ class RAM {
         if (this.password) {
             url = `${url}&Password=${this.password}`;
         }
-        const req = await needle('get', url);
+        const req = await (0, needle_1.default)('get', url);
         if (req.statusCode != 200)
             return false;
         return req.body;
@@ -59,7 +39,7 @@ class RAM {
         if (this.password) {
             url = `${url}&Password=${this.password}`;
         }
-        const req = await needle('post', url, body);
+        const req = await (0, needle_1.default)('post', url, body);
         if (req.statusCode != 200)
             return false;
         return req.body;
@@ -174,7 +154,7 @@ class RAM {
      * Gets the account names in account manager and returns a list separated by commas. Requires `AllowGetAccounts` setting to be set to `true`.
      */
     async GetAccounts() {
-        const req = await needle('get', `${this.url}/GetAccounts&Password=${this.password}`);
+        const req = await (0, needle_1.default)('get', `${this.url}/GetAccounts&Password=${this.password}`);
         if (req.statusCode != 200)
             return false;
         return req.body;

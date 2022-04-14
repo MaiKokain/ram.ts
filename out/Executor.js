@@ -88,37 +88,32 @@ class Executor {
                         client.send(String(script));
                     }
                 }
-                return `Success`;
+                return this.ws.clients;
             case "krnl":
-                const client = net.connect(pipes[exploit]);
-                client.once('ready', () => { client.end(script); });
-                return client;
+                return sendPipe(pipes[exploit]);
             case "fluxus":
                 const InjectedMaps = new Map();
                 const roblox_process = await (0, find_process_1.default)('name', 'RobloxPlayer');
                 for (let i = 0; i < roblox_process.length; i++) {
                     if (InjectedMaps.has(roblox_process[i].pid)) {
-                        const krnl_client = net.connect(pipes[exploit] + roblox_process[i].pid);
-                        krnl_client.once('ready', () => { krnl_client.end(script); });
-                        return krnl_client;
+                        return sendPipe(pipes[exploit] + roblox_process[i].pid);
                     }
                     else {
                         InjectedMaps.set(roblox_process[i].pid, "");
-                        const client = net.connect(pipes[exploit] + roblox_process[i].pid);
-                        client.once('ready', () => { client.end(script); });
-                        return client;
+                        return sendPipe(pipes[exploit] + roblox_process[i].pid);
                     }
                 }
                 break;
             case "oxygen_u":
-                const oxy_client = net.connect(pipes[exploit]);
-                oxy_client.once('ready', () => { oxy_client.end(script); });
-                return oxy_client;
+                return sendPipe(pipes[exploit]);
             case "easy_exploit":
-                const easyexploit_client = net.connect(pipes[exploit]);
-                easyexploit_client.once('ready', () => { easyexploit_client.end(script); });
-                return easyexploit_client;
+                return sendPipe(pipes[exploit]);
             default: break;
+        }
+        function sendPipe(pipe) {
+            const client = net.connect(pipe);
+            client.once('ready', () => { client.end(script); });
+            return client;
         }
     }
 }
