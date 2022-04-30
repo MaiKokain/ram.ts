@@ -1,6 +1,5 @@
 ## About
-This is a Javascript/Typescript library for [Roblox Account Manager](https://github.com/ic3w0lf22/Roblox-Account-Manager) by [ic3w0lf22](https://github.com/ic3w0lf22)
-
+This is a Javascript/Typescript library for [Roblox Account Manager](https://github.com/ic3w0lf22/Roblox-Account-Manager)
 ---
 ### Installation
 #### NPM
